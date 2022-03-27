@@ -5,6 +5,16 @@ pipeline {
     dockerImage = ''
   }
   agent any
+  
+  
+  stages {
+   
+     stage('Install Dependencies') { 
+        steps { 
+           sh 'npm install' 
+        }
+     }
+    
   stages {
     stage('Cloning Git') {
       steps {
