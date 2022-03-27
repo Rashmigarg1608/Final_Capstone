@@ -14,12 +14,13 @@ pipeline {
            sh 'npm install' 
         }
      }
-    
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/Rashmigarg1608/Final_Capstone.git'
-      }
-    }
+   
+    stage('Build') {
+    steps {
+       sh 'npm run build'
+     }
+  }
+
     stage('Build') {
        steps {
          sh 'docker build -t application .'
