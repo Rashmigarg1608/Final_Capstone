@@ -1,38 +1,54 @@
-// pipeline { 
+pipeline { 
   
-//    agent any
+  agent any
+  tools 
+    {
+        nodejs 'Node'
+    }
+  
+  environment {
+    registry = "rashmigarg16/application"
+    registryCredential = 'rashmigarg16'
+    dockerImage = ''
+  }
 
-//    stages {
+   stages {
    
-//      stage('Install Dependencies') { 
-//         steps { 
-//            sh 'npm install' 
-//         }
-//      }
+     stage('Install Dependencies') { 
+        steps { 
+           sh 'npm install' 
+        }
+     }
      
-//      stage('Build') {
-//       steps {
-//          sh 'export NODE_OPTIONS=--openssl-legacy-provider'
-//          sh 'npm run dev'
-//       }
-//     }  
+     stage('Build') {
+      steps {
+         sh 'export NODE_OPTIONS=--openssl-legacy-provider'
+         sh 'npm run dev'
+      }
+    }  
      
-//      stage('Test') { 
-//         steps { 
-//            sh 'echo "testing application..."'
-//         }
-//       }
+     stage('Build Image') {
+       steps {
+         sh 'docker build -t application .'
+       }
+    }
+     
+     stage('Test') { 
+        steps { 
+           sh 'echo "testing application..."'
+        }
+      }
 
-//          stage("Deploy application") { 
-//          steps { 
-//            sh 'echo "deploying application..."'
-//          }
+         stage("Deploy application") { 
+         steps { 
+           sh 'echo "deploying application..."'
+         }
 
-//      }
+     }
   
-//    	}
+   	}
 
-//    }
+   }
 
 
 pipeline {
