@@ -1,81 +1,17 @@
-pipeline { 
-  
-  agent any
-  tools 
-    {
-        nodejs 'Node'
-    }
-  
-  environment {
-    registry = "rashmigarg16/application"
-    registryCredential = 'rashmigarg16'
-    dockerImage = ''
-  }
-
-   stages {
-   
-     stage('Install Dependencies') { 
-        steps { 
-           sh 'npm install' 
-        }
-     }
-     
-     stage('Build') {
-      steps {
-         sh 'export NODE_OPTIONS=--openssl-legacy-provider'
-         sh 'npm run dev'
-      }
-    }  
-     
-     stage('Build Image') {
-       steps {
-         sh 'docker build -t application .'
-       }
-    }
-     
-     stage('Test') { 
-        steps { 
-           sh 'echo "testing application..."'
-        }
-      }
-
-         stage("Deploy application") { 
-         steps { 
-           sh 'echo "deploying application..."'
-         }
-
-     }
-  
-   	}
-
-   }
-
-
 pipeline {
-  agent any
-    tools 
-    {
-        nodejs 'Node'
-    }
   environment {
     registry = "rashmigarg16/application"
     registryCredential = 'rashmigarg16'
     dockerImage = ''
   }
-  
-  stage('Install Dependencies') { 
-        steps { 
-           sh 'npm install' 
-        }
-     }
-     
-     stage('Build') {
+  agent any
+  stages {
+    stage('Cloning Git') {
       steps {
-         sh 'export NODE_OPTIONS=--openssl-legacy-provider'
-         sh 'npm run dev'
+        git 'https://github.com/Rashmigarg1608/Final_Capstone.git'
       }
-    }  
-    stage('Build Image') {
+    }
+    stage('Build') {
        steps {
          sh 'docker build -t application .'
        }
@@ -97,4 +33,4 @@ pipeline {
       }
     }
   }
-
+}
