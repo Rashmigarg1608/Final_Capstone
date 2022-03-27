@@ -15,7 +15,6 @@ pipeline {
         }
      }
     
-  stages {
     stage('Cloning Git') {
       steps {
         git 'https://github.com/Rashmigarg1608/Final_Capstone.git'
