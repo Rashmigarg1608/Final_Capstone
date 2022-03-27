@@ -13,7 +13,7 @@ pipeline {
      stage('Build') {
       steps {
          sh 'export NODE_OPTIONS=--openssl-legacy-provider'
-         sh 'npm run dev'
+         sh 'npm run client'
       }
     }  
      
