@@ -12,6 +12,7 @@ pipeline {
      stage('Install Dependencies') { 
         steps { 
            sh 'npm install'
+           sh 'nvm install -g n 16.8.6'
 
         }
      }
@@ -20,7 +21,6 @@ pipeline {
     steps {
        sh 'export NODE_OPTIONS=--openssl-legacy-provider'
        sh 'npm run dev'
-       sh 'export NODE_OPTIONS=--openssl-legacy-provider'
 
      }
   }
