@@ -9,7 +9,6 @@
         "server": "nodemon server.js",
         "client": "npm start --prefix client",
         "dev": "concurrently \"npm run server\" \"npm run client\""
-        "build": "react-scripts --openssl-legacy-provider"
 
     },
     "author": "Dave Howson",
