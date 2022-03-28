@@ -12,7 +12,7 @@ pipeline {
      stage('Install Dependencies') { 
         steps { 
            sh 'npm install'
-           sh 'export NODE_OPTIONS=--openssl-legacy-provider'
+//            sh 'export NODE_OPTIONS=--openssl-legacy-provider'
 
         }
      }
