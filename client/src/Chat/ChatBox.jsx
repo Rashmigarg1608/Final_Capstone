@@ -99,8 +99,8 @@ const ChatBox = (props) => {
 
   useEffect(() => {
     reloadMessages();
-    scrollToBottom();
-  }, [lastMessage, props.scope, props.conversationId]);
+    scrollToBottom();}
+//   , [lastMessage, props.scope, props.conversationId]);
 
   useEffect(() => {
     const socket = socketIOClient(process.env.REACT_APP_API_URL);
