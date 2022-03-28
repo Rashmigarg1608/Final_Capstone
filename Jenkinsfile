@@ -31,10 +31,10 @@ pipeline {
     stage('Deploy Image') {
       steps{
          sh '''
-            docker.withRegistry( '', registryCredential ) {
+            docker.withRegistry( '', registryCredential ) 
             docker push rashmigarg16/application:$BUILD_NUMBER 
             '''
-            }
+            
         }
       }
     }
