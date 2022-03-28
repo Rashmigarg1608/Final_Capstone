@@ -12,7 +12,6 @@ pipeline {
      stage('Install Dependencies') { 
         steps { 
            sh 'npm install'
-           sh 'nvm install -g n 16.8.6'
 
         }
      }
@@ -25,11 +24,11 @@ pipeline {
      }
   }
 
-//     stage('Build Docker') {
-//        steps {
-//          sh 'docker build -t rashmigarg16/application:$BUILD_NUMBER .'
-//        }
-//     }
+    stage('Build Docker') {
+       steps {
+         sh 'docker build -t rashmigarg16/application:$BUILD_NUMBER .'
+       }
+    }
  
 //     stage('Deploy Image') {
 //       steps{
