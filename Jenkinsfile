@@ -35,7 +35,7 @@ pipeline {
             docker push rashmigarg16/application:$BUILD_NUMBER 
             '''
             
-        }
+      }}
       }
     }
   
