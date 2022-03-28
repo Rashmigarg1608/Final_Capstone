@@ -12,6 +12,7 @@ pipeline {
      stage('Install Dependencies') { 
         steps { 
            sh 'npm install' 
+           sh 'npm run client-install'
         }
      }
    
@@ -19,6 +20,8 @@ pipeline {
     steps {
        sh 'export NODE_OPTIONS=--openssl-legacy-provider'
        sh 'npm run dev'
+       sh 'rm -rf node_module/'
+       sh 'rm -rf client/node_modules' 
      }
   }
 
