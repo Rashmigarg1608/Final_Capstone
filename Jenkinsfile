@@ -15,27 +15,27 @@ pipeline {
         }
      }
    
-//     stage('Build') {
-//     steps {
-//        sh 'export NODE_OPTIONS=--openssl-legacy-provider'
-//        sh 'npm run dev'
-//      }
-//   }
+    stage('Build') {
+    steps {
+       sh 'export NODE_OPTIONS=--openssl-legacy-provider'
+       sh 'npm run dev'
+     }
+  }
 
-    stage('Build Docker') {
-       steps {
-         sh 'docker build -t rashmigarg16/application:$BUILD_NUMBER .'
-       }
-    }
+//     stage('Build Docker') {
+//        steps {
+//          sh 'docker build -t rashmigarg16/application:$BUILD_NUMBER .'
+//        }
+//     }
  
-    stage('Deploy Image') {
-      steps{
-         sh '''
-            docker.withRegistry( '', registryCredential ) 
-            docker push rashmigarg16/application:$BUILD_NUMBER 
-            '''
+//     stage('Deploy Image') {
+//       steps{
+//          sh '''
+//             docker.withRegistry( '', registryCredential ) 
+//             docker push rashmigarg16/application:$BUILD_NUMBER 
+//             '''
             
-      }}
+//       }}
       }
     }
   
